@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %}登录 - Django认证系统{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-header">
+        <h2>🔑 用户登录</h2>
+        <p>请输入您的凭据以访问系统</p>
+    </div>
+    
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="username">👤 用户名</label>
+            <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                required 
+                placeholder="请输入用户名"
+                autocomplete="username"
+            >
+        </div>
+        
+        <div class="form-group">
+            <label for="password">🔐 密码</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                required 
+                placeholder="请输入密码"
+                autocomplete="current-password"
+            >
+        </div>
+        
+        <button type="submit" class="login-btn">
+            🚀 登录系统
+        </button>
+    </form>
+    
+    <div class="login-footer">
+        <p>💡 测试账户信息：</p>
+        <p><strong>用户名:</strong> admin</p>
+        <p><strong>密码:</strong> Admin123!</p>
+    </div>
+    
+    <div class="demo-section">
+        <h3>🧪 权限控制演示</h3>
+        <p>点击下方按钮测试未登录用户访问受保护页面的效果：</p>
+        <a href="{% url 'dashboard' %}" class="demo-btn">
+            🛡️ 测试受保护页面
+        </a>
+        <p class="demo-tip">💡 未登录状态下点击将自动重定向到此登录页面</p>
+    </div>
+</div>
+
+<style>
+    .login-container {
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    .login-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .login-header h2 {
+        color: #4a5568;
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+    
+    .login-header p {
+        color: #718096;
+        font-size: 1.1em;
+    }
+    
+    .login-form {
+        background: #f7fafc;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 20px;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #4a5568;
+        font-size: 1.1em;
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        background: white;
+    }
+    
+    .form-group input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .login-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 24px;
+        border-radius: 8px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .login-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+    
+    .login-btn:active {
+        transform: translateY(0);
+    }
+    
+    .login-footer {
+        background: #edf2f7;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .login-footer p {
+        margin-bottom: 5px;
+        color: #4a5568;
+    }
+    
+    .login-footer p:first-child {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    .login-footer strong {
+        color: #2d3748;
+    }
+    
+    /* 权限控制演示区域样式 */
+    .demo-section {
+        background: #f0f9ff;
+        border: 2px solid #0ea5e9;
+        border-radius: 12px;
+        padding: 25px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .demo-section h3 {
+        color: #0c4a6e;
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    
+    .demo-section p {
+        color: #075985;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+    
+    .demo-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1em;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin: 10px 0;
+    }
+    
+    .demo-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+    }
+    
+    .demo-tip {
+        font-size: 0.9em;
+        color: #0369a1 !important;
+        font-style: italic;
+        margin-top: 10px !important;
+    }
+</style>
+{% endblock %}

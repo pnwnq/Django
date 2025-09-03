@@ -1,0 +1,385 @@
+{% extends 'base.html' %}
+
+{% block title %}技术展示指南 - Django认证系统{% endblock %}
+
+{% block content %}
+<div class="tech-demo-container">
+    <div class="demo-header">
+        <h2>🔧 全栈技术展示指南</h2>
+        <p>多维度展示Django认证系统的技术深度</p>
+    </div>
+    
+    <!-- 第一层：Django Admin 后台展示 -->
+    <div class="demo-section admin-section">
+        <h3>🔑 第一层：Django Admin 后台管理</h3>
+        <div class="demo-content">
+            <div class="demo-description">
+                <h4>展示要点：</h4>
+                <ul>
+                    <li>✅ 用户管理界面的专业性</li>
+                    <li>✅ 数据库表结构的设计</li>
+                    <li>✅ Django内置权限系统</li>
+                    <li>✅ 管理后台的安全控制</li>
+                </ul>
+            </div>
+            <div class="demo-action">
+                <a href="/admin/" target="_blank" class="demo-link admin-link">
+                    🔧 访问Django管理后台
+                </a>
+                <p class="demo-tip">💡 展示用户表、会话表、权限表等核心数据结构</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第二层：浏览器开发者工具分析 -->
+    <div class="demo-section devtools-section">
+        <h3>🛠️ 第二层：浏览器开发者工具分析</h3>
+        <div class="demo-content">
+            <div class="demo-description">
+                <h4>关键观察点：</h4>
+                <ul>
+                    <li>🌐 <strong>Network标签</strong>：HTTP请求/响应过程</li>
+                    <li>🍪 <strong>Application标签</strong>：Session Cookie管理</li>
+                    <li>🔄 <strong>重定向链路</strong>：302状态码跳转逻辑</li>
+                    <li>🔒 <strong>Security标签</strong>：CSRF Token验证</li>
+                </ul>
+            </div>
+            <div class="demo-steps">
+                <h4>操作步骤：</h4>
+                <ol>
+                    <li>按F12打开开发者工具</li>
+                    <li>切换到Network标签</li>
+                    <li>执行登录/登出操作</li>
+                    <li>观察HTTP状态码和重定向</li>
+                    <li>检查Application → Cookies → sessionid</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第三层：技术架构深度解析 -->
+    <div class="demo-section architecture-section">
+        <h3>🏗️ 第三层：技术架构深度解析</h3>
+        <div class="demo-content">
+            <div class="architecture-grid">
+                <div class="arch-item">
+                    <h4>🔐 认证流程</h4>
+                    <p>Django内置auth系统 → authenticate() → login() → session管理</p>
+                </div>
+                <div class="arch-item">
+                    <h4>🛡️ 权限控制</h4>
+                    <p>@login_required装饰器 → 中间件拦截 → 自动重定向</p>
+                </div>
+                <div class="arch-item">
+                    <h4>🗄️ 数据存储</h4>
+                    <p>SQLite数据库 → auth_user表 → django_session表</p>
+                </div>
+                <div class="arch-item">
+                    <h4>🎨 前端架构</h4>
+                    <p>Django Templates → CSS3动画 → 响应式设计</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 实时技术数据展示 -->
+    <div class="demo-section data-section">
+        <h3>📊 实时技术数据展示</h3>
+        <div class="data-grid">
+            <div class="data-item">
+                <span class="data-label">当前会话ID：</span>
+                <span class="data-value">{{ session_key|default:"未生成" }}</span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">用户代理：</span>
+                <span class="data-value">{{ user_agent|truncatechars:50 }}</span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">用户权限：</span>
+                <span class="data-value">{% if user.is_superuser %}超级管理员{% else %}普通用户{% endif %}</span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">认证状态：</span>
+                <span class="data-value authenticated">✅ 已认证</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 核心代码展示 -->
+    <div class="demo-section code-section">
+        <h3>💾 核心代码片段展示</h3>
+        <div class="code-examples">
+            <div class="code-example">
+                <h4>权限控制装饰器</h4>
+                <pre><code>@login_required
+def dashboard(request):
+    """受保护的用户仪表板"""
+    return render(request, 'accounts/dashboard.html')</code></pre>
+            </div>
+            <div class="code-example">
+                <h4>认证逻辑</h4>
+                <pre><code>user = authenticate(request, 
+                   username=username, 
+                   password=password)
+if user is not None:
+    login(request, user)</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 技术展示清单 -->
+    <div class="demo-section checklist-section">
+        <h3>📋 面试展示清单</h3>
+        <div class="checklist">
+            <div class="check-item">
+                <input type="checkbox" id="frontend"> 
+                <label for="frontend">前端用户体验演示</label>
+            </div>
+            <div class="check-item">
+                <input type="checkbox" id="backend"> 
+                <label for="backend">Django Admin后台展示</label>
+            </div>
+            <div class="check-item">
+                <input type="checkbox" id="devtools"> 
+                <label for="devtools">开发者工具技术分析</label>
+            </div>
+            <div class="check-item">
+                <input type="checkbox" id="security"> 
+                <label for="security">安全机制讲解</label>
+            </div>
+            <div class="check-item">
+                <input type="checkbox" id="architecture"> 
+                <label for="architecture">系统架构说明</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .tech-demo-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .demo-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .demo-header h2 {
+        color: #2d3748;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+    
+    .demo-header p {
+        color: #718096;
+        font-size: 1.2em;
+    }
+    
+    .demo-section {
+        background: #f7fafc;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 25px;
+        border-left: 5px solid;
+    }
+    
+    .admin-section {
+        border-left-color: #48bb78;
+    }
+    
+    .devtools-section {
+        border-left-color: #ed8936;
+    }
+    
+    .architecture-section {
+        border-left-color: #667eea;
+    }
+    
+    .data-section {
+        border-left-color: #38b2ac;
+    }
+    
+    .code-section {
+        border-left-color: #9f7aea;
+    }
+    
+    .checklist-section {
+        border-left-color: #f56565;
+    }
+    
+    .demo-section h3 {
+        color: #2d3748;
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    
+    .demo-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: start;
+    }
+    
+    .demo-description ul, .demo-steps ol {
+        padding-left: 20px;
+        line-height: 1.8;
+    }
+    
+    .demo-description li, .demo-steps li {
+        margin-bottom: 8px;
+        color: #4a5568;
+    }
+    
+    .demo-link {
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1em;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin-bottom: 15px;
+    }
+    
+    .admin-link {
+        background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        color: white;
+        box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+    }
+    
+    .demo-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(72, 187, 120, 0.4);
+    }
+    
+    .demo-tip {
+        color: #718096;
+        font-style: italic;
+        margin: 0;
+    }
+    
+    .architecture-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .arch-item {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .arch-item h4 {
+        color: #2d3748;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+    
+    .arch-item p {
+        color: #4a5568;
+        line-height: 1.5;
+        margin: 0;
+    }
+    
+    .data-grid {
+        display: grid;
+        gap: 15px;
+    }
+    
+    .data-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .data-label {
+        font-weight: 600;
+        color: #2d3748;
+    }
+    
+    .data-value {
+        color: #4a5568;
+        font-family: monospace;
+        font-size: 0.9em;
+    }
+    
+    .data-value.authenticated {
+        color: #38a169;
+        font-weight: 600;
+    }
+    
+    .code-examples {
+        display: grid;
+        gap: 20px;
+    }
+    
+    .code-example {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .code-example h4 {
+        color: #2d3748;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+    }
+    
+    .code-example pre {
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+    
+    .checklist {
+        display: grid;
+        gap: 15px;
+    }
+    
+    .check-item {
+        display: flex;
+        align-items: center;
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .check-item input[type="checkbox"] {
+        margin-right: 12px;
+        transform: scale(1.2);
+    }
+    
+    .check-item label {
+        color: #2d3748;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+        .demo-content {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .architecture-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
