@@ -27,6 +27,6 @@ urlpatterns = [
     # 用户认证系统
     path('accounts/', include('accounts.urls')),
     
-    # 受保护区域 - 女王的
+    # 用户仪表板 - 受保护页面
     path('dashboard/', views.dashboard, name='dashboard'),
 ]
